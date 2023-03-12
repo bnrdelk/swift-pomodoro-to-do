@@ -1,26 +1,32 @@
 //
 //  ContentView.swift
-//  Pomodoro-To-Do
+//  PomodoroToDo
 //
-//  Created by Beyza Nur Deliktaş on 12.03.2023.
+//  Created by Beyza Nur Deliktaş on 8.03.2023.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+
+    @EnvironmentObject var pomodoroModel: PomodoroModel
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Home()
+            .environmentObject(pomodoroModel)
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
-        ContentView()
+        NavigationView{
+            ContentView()
+                .environmentObject(PomodoroModel())
+                .navigationTitle("To-Do Timer")
+        }
+       
     }
+    
 }
